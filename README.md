@@ -85,7 +85,11 @@ java -cp bin Main
 
 ---
 
+
 ## 👨‍💻 Autor
 
-Desenvolvido por **Isaias Evaristo**.  
-*Comprometido com aprendizado contínuo, boas práticas de código e soluções tecnológicas inovadoras.*
+Desenvolvido por **Isaias Evaristo**  
+*Focado em inovação, aprendizado contínuo e na construção de soluções tecnológicas que geram valor real.*
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/isaias-evaristo-69504b430)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:isaias-evaristo156@hotmail.com)
