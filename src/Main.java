@@ -87,8 +87,13 @@ public class Main {
        transacao.mostrarTransacao();
 
 
+     Historico historico = new Historico();
 
+         historico.adicionarTransacao(transacao);
+        
+         System.out.println();
 
+         historico.mostrarHistorico();
     }
 
 }

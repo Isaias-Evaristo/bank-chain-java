@@ -1,12 +1,22 @@
+import java.util.ArrayList;
+
 public class Historico {
-    
-    Transacao transacao;
 
+    // Futuramente o Historico armazenará múltiplas transações.
 
-    public void mostrarHistorico() { 
+    ArrayList<Transacao> transacao = new ArrayList<>();
+
+    public void adicionarTransacao(Transacao transacao) {
+        this.transacao.add(transacao);
+    }
+
+    public void mostrarHistorico() {
 
         System.out.println("=== HISTÓRICO DE TRANSAÇÕES ===");
 
-        transacao.mostrarTransacao();
-    }  
+        for (Transacao transacao : this.transacao) {
+            transacao.mostrarTransacao();
+        }
+
+    }
 }
