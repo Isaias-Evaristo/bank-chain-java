@@ -96,12 +96,19 @@ public class Main {
          historico.mostrarHistorico();
 
 
-        // Adiciona a transação no histórico da conta1
           conta1.historico.adicionarTransacao(transacao1);
 
-       // Imprime o extrato completo da conta1
+       
           conta1.mostrarExtrato();
        
+                System.out.println();
+        System.out.println(">>> REGISTRO DO BLOCO GÊNESIS NO LEDGER (LIVRO-RAZÃO) IMUTÁVEL <<<");
 
+        
+        Bloco blocoGenesis = new Bloco(0, conta1.historico.transacao, "0");
+
+        
+        blocoGenesis.mostrarBloco();
     }
-}
+}      
+       
