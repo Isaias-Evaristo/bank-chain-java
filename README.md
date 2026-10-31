@@ -8,16 +8,11 @@
 
 ---
 
-## 💡 Motivação e Propósito
+## 💡 💡 O Propósito deste Projeto
 
-Este projeto nasceu da união de três grandes paixões e de uma meta clara de evolução técnica:
+O propósito deste projeto é trabalhar com tecnologias e linguagens pelas quais tenho um gosto genuíno, unindo a solidez do Java à precisão que o setor bancário exige. Sempre me chamou a atenção como sistemas financeiros precisam ser rigorosos, seguros e auditáveis em cada centavo movimentado. Ao mesmo tempo, sou fascinado pelo potencial transformador da Blockchain e pelas possibilidades reais que ela traz para sanar problemas históricos da humanidade ligados à confiança, transparência e descentralização — entregando níveis de integridade que chegam a quase 100% de confiabilidade.
 
-1. **Gosto genuíno pelo Java:** Escolhi o Java por sua robustez, maturidade e por ser a linguagem que sustenta os maiores ecossistemas empresariais e financeiros do mundo.
-2. **Interesse pelo Setor Bancário:** Sempre me chamou a atenção como sistemas financeiros precisam ser precisos, seguros e auditáveis em cada centavo transacionado.
-3. **Fascínio pelo Potencial da Blockchain:** Sou fascinado pelas possibilidades reais que a Blockchain oferece para resolver problemas históricos da humanidade ligados à confiança, segurança e descentralização — aproximando soluções de quase 100% de confiabilidade.
-4. **Mentalidade de Aprendizado e Inovação:** Minha meta não é apenas estudar a teoria, mas aprender construindo na prática, sempre me desafiando a inovar e a dar o próximo passo na engenharia de software.
-
-Em vez de criar uma Blockchain solta sem propósito, decidi construir primeiro o **sistema financeiro** que naturalmente sentirá a necessidade de blocos imutáveis.
+Minha meta não é apenas estudar conceitos teóricos, mas aprender construindo na prática, sempre buscando inovar e dar o próximo passo na engenharia de software. Por isso, em vez de criar uma blockchain solta sem contexto, decidi construir primeiro a base de um sistema financeiro real que, naturalmente, sentirá a necessidade de blocos seguros e imutáveis.
 
 ---
 
