@@ -2,7 +2,7 @@
 
 [![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://www.oracle.com/java/)
 [![Git](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)](https://git-scm.com/)
-[![Status](https://img.shields.io/badge/Status-Em%20Evolu%C3%A7%C3%A3o-brightgreen?style=for-the-badge)](#)
+[![Status](https://img.shields.io/badge/Status-Conclu%C3%ADdo-brightgreen?style=for-the-badge)](#)
 
 > Sistema bancário modular desenvolvido em Java com Programação Orientada a Objetos (POO), regras de negócio reais, histórico com `ArrayList` e arquitetura desenhada rumo à tecnologia de **Blockchain**.
 
@@ -18,10 +18,43 @@ Minha meta não é apenas estudar conceitos teóricos, mas aprender construindo 
 
 ## 🗺️ Trilha Arquitetural de Evolução
 
-```text
-Cliente ➔ Conta ➔ Transferência ➔ Transação ➔ Histórico ➔ Extrato ➔ Bloco ➔ Blockchain
-   ✅       ✅          ✅            ✅          ✅         ✅       ⏳         ⏳
+```mermaid
+flowchart LR
+    A[Cliente] --> B[Conta]
+    B --> C[Transferência]
+    C --> D[Transação]
+    D --> E[Histórico]
+    E --> F[Extrato]
+    F --> G[Bloco]
+    G --> H[Blockchain]
+    
+    style A fill:#1b5e20,stroke:#2e7d32,color:#fff
+    style B fill:#1b5e20,stroke:#2e7d32,color:#fff
+    style C fill:#1b5e20,stroke:#2e7d32,color:#fff
+    style D fill:#1b5e20,stroke:#2e7d32,color:#fff
+    style E fill:#1b5e20,stroke:#2e7d32,color:#fff
+    style F fill:#1b5e20,stroke:#2e7d32,color:#fff
+    style G fill:#1b5e20,stroke:#2e7d32,color:#fff
+    style H fill:#1b5e20,stroke:#2e7d32,color:#fff
 ```
+
+---
+
+## 🛠️ Tecnologias e Ferramentas Utilizadas
+
+![Java](https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white)
+![POO](https://img.shields.io/badge/Paradigma-POO-blue?style=flat-square)
+![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)
+![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=flat-square&logo=visual-studio-code&logoColor=white)
+![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?style=flat-square&logo=powershell&logoColor=white)
+
+* **Linguagem:** Java (JDK) — foco em modularidade e boas práticas.
+* **Paradigma:** Programação Orientada a Objetos (Classes, Objetos, Métodos, Encapsulamento e Composição).
+* **Estrutura de Dados:** Coleções dinâmicas com `ArrayList`.
+* **Criptografia & Hashing:** Geração de Hash para encadeamento e proteção de blocos.
+* **Controle de Versão:** Git & GitHub (commits semânticos e rastreabilidade de código).
+* **Ambiente de Desenvolvimento:** Visual Studio Code & PowerShell.
 
 ---
 
@@ -33,7 +66,9 @@ Cliente ➔ Conta ➔ Transferência ➔ Transação ➔ Histórico ➔ Extrato 
 | **`Conta`** | Gerencia saldo, regras operacionais (depósito, saque com validação e transferência) e possui seu próprio histórico. |
 | **`Transacao`** | Representa o comprovante atômico de uma operação (tipo, valor, data, hora, descrição). |
 | **`Historico`** | Estrutura de dados dinâmica baseada em `ArrayList<Transacao>` para registrar as movimentações sem limite fixo. |
-| **`Main`** | Orquestra a execução dos fluxos, simula operações reais e emite os extratos. |
+| **`Bloco`** | Estrutura que agrupa transações, gera carimbo de tempo (timestamp) e lacre digital (Hash). |
+| **`Blockchain`** | Livro-razão distribuído que gerencia a cadeia de blocos criptograficamente encadeados. |
+| **`Main`** | Orquestra a execução dos fluxos, simula operações reais, emite extratos e registra o Ledger imutável. |
 
 ---
 
@@ -43,6 +78,7 @@ Cliente ➔ Conta ➔ Transferência ➔ Transação ➔ Histórico ➔ Extrato 
 - **Validação de Depósito:** Garantia de que valores de entrada sejam estritamente positivos (`valor > 0`).
 - **Composição de Objetos:** Cada `Conta` tem um `Cliente` e o seu próprio `Historico`.
 - **Extrato Bancário Consolidado:** O método `mostrarExtrato()` cruza os dados do titular, conta, transações do histórico e saldo remanescente.
+- **Encadeamento Criptográfico:** Cada bloco armazena o Hash do bloco anterior, garantindo imutabilidade total dos dados.
 
 ---
 
@@ -79,12 +115,11 @@ java -cp bin Main
 - [x] Implementar classe de auditoria `Transacao` com método `mostrarTransacao()`
 - [x] Refatorar `Historico` para uso de coleção dinâmica (`ArrayList<Transacao>`)
 - [x] Implementar emissão de **Extrato Bancário** na conta
-- [ ] Modelar a entidade **`Bloco`** com encadeamento de dados
-- [ ] Implementar algoritmo de criptografia e Hashing (SHA-256)
-- [ ] Estruturar a **`Blockchain`** para validação imutável do histórico bancário
+- [x] Modelar a entidade **`Bloco`** com encadeamento de dados
+- [x] Implementar algoritmo de geração de lacre digital e Hashing
+- [x] Estruturar a **`Blockchain`** para validação imutável do histórico bancário
 
 ---
-
 
 ## 👨‍💻 Autor
 
