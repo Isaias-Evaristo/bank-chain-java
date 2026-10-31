@@ -41,6 +41,14 @@ public class Main {
         System.out.println("=== CONTA 2 ===");
         conta2.mostrarSaldo();
 
+        Transacao transacao = new Transacao();
+
+        transacao.tipo = "TRANSFERENCIA";
+        transacao.valor = 300;
+        transacao.data = "31/10/2026";
+        transacao.hora = "16:30";
+        transacao.descricao = "Transferencia de Isaias para Maria";
+    
 
        System.out.println();
 
@@ -69,13 +77,14 @@ public class Main {
         System.out.println();
 
        System.out.println("=== COMPROVANTE DE TRANSAÇÃO ===");
-        Transacao transacao = new Transacao();
+
         transacao.tipo = "TRANSFERENCIA";
         transacao.valor = 300;
         transacao.data = "30/10/2026";
         transacao.hora = "16:30";
         transacao.descricao = "Transferencia de Isaias para Maria";
-        transacao1.mostrarTransacao();
+
+       transacao.mostrarTransacao();
 
 
 
