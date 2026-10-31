@@ -3,7 +3,7 @@ public class Conta {
     Cliente cliente;
     int numeroConta;
     double saldo;
-
+    Historico historico = new Historico();
 
     public void depositar (double valor) {
 
@@ -39,4 +39,17 @@ public class Conta {
     System.out.println("Saldo Atual: R$ " + saldo);
         }
 
+        public void mostrarExtrato() {
+    System.out.println("=================================");
+    System.out.println("        EXTRATO BANCÁRIO         ");
+    System.out.println("=================================");
+    System.out.println("Cliente: " + cliente.nome);
+    System.out.println("Conta: " + numeroConta);
+    System.out.println();
+
+    historico.mostrarHistorico();
+
+    System.out.println("Saldo Atual: R$ " + saldo);
+    System.out.println("=================================");
+}
   }

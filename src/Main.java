@@ -94,6 +94,14 @@ public class Main {
          System.out.println();
 
          historico.mostrarHistorico();
-    }
 
+
+        // Adiciona a transação no histórico da conta1
+          conta1.historico.adicionarTransacao(transacao1);
+
+       // Imprime o extrato completo da conta1
+          conta1.mostrarExtrato();
+       
+
+    }
 }
