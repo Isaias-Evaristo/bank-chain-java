@@ -8,7 +8,7 @@
 
 ---
 
-## 💡 💡 O Propósito deste Projeto
+## 💡 O Propósito deste Projeto
 
 O propósito deste projeto é trabalhar com tecnologias e linguagens pelas quais tenho um gosto genuíno, unindo a solidez do Java à precisão que o setor bancário exige. Sempre me chamou a atenção como sistemas financeiros precisam ser rigorosos, seguros e auditáveis em cada centavo movimentado. Ao mesmo tempo, sou fascinado pelo potencial transformador da Blockchain e pelas possibilidades reais que ela traz para sanar problemas históricos da humanidade ligados à confiança, transparência e descentralização — entregando níveis de integridade que chegam a quase 100% de confiabilidade.
 
