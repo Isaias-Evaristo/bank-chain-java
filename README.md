@@ -6,6 +6,9 @@
 
 > Sistema bancário modular desenvolvido em Java com Programação Orientada a Objetos (POO), regras de negócio reais, histórico com `ArrayList`, arquitetura desenhada rumo à tecnologia de **Blockchain** e módulo Web com **Spring Boot**.
 
+🌐 **Aplicação Online:** [https://bank-chain-java.onrender.com](https://bank-chain-java.onrender.com)  
+*(Observação: Como o serviço está hospedado em plano gratuito, no primeiro acesso o servidor pode levar cerca de 15 a 45 segundos para inicializar caso esteja em repouso).*
+
 ---
 
 ## 💡 O Propósito deste Projeto
