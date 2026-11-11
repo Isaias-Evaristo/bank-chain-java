@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo - Isaias Evaristo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 13px;
+            color: #1a1a2e;
+            background: #fff;
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 40px 50px;
+            line-height: 1.6;
+        }
+        .header { border-bottom: 3px solid #1b5e20; padding-bottom: 18px; margin-bottom: 22px; }
+        .header h1 { font-size: 28px; font-weight: 700; color: #1b5e20; letter-spacing: 1px; }
+        .header .titulo { font-size: 14px; color: #2e7d32; font-weight: 600; margin-top: 3px; }
+        .contatos { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 10px; font-size: 12px; color: #444; }
+        .contatos a { color: #1b5e20; text-decoration: none; }
+        .secao { margin-bottom: 22px; }
+        .secao h2 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #1b5e20; border-bottom: 1.5px solid #c8e6c9; padding-bottom: 4px; margin-bottom: 12px; }
+        .item { margin-bottom: 14px; }
+        .item-header { display: flex; justify-content: space-between; align-items: flex-start; }
+        .item-titulo { font-weight: 700; font-size: 13px; color: #1a1a2e; }
+        .item-empresa { font-size: 12.5px; color: #2e7d32; font-weight: 600; }
+        .item-periodo { font-size: 11.5px; color: #666; white-space: nowrap; margin-left: 12px; }
+        .item ul { margin-top: 5px; margin-left: 16px; }
+        .item ul li { font-size: 12.5px; color: #333; margin-bottom: 2px; }
+        .item p { font-size: 12.5px; color: #333; margin-top: 4px; }
+        .habilidades-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 30px; }
+        .habilidade-grupo h3 { font-size: 12px; font-weight: 700; color: #1b5e20; margin-bottom: 5px; }
+        .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+        .tag { background: #e8f5e9; color: #1b5e20; border: 1px solid #c8e6c9; padding: 2px 9px; border-radius: 20px; font-size: 11.5px; font-weight: 600; }
+        .idioma { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+        .idioma-nome { font-weight: 600; font-size: 12.5px; min-width: 90px; }
+        .nivel { font-size: 12px; color: #555; }
+        .barra { display: flex; gap: 3px; }
+        .ponto { width: 10px; height: 10px; border-radius: 50%; background: #c8e6c9; border: 1.5px solid #2e7d32; }
+        .ponto.ativo { background: #2e7d32; }
+        .carta { page-break-before: always; padding-top: 40px; }
+        .carta-header { border-bottom: 3px solid #1b5e20; padding-bottom: 14px; margin-bottom: 24px; }
+        .carta-header h1 { font-size: 22px; color: #1b5e20; font-weight: 700; }
+        .carta-header p { font-size: 12px; color: #555; margin-top: 4px; }
+        .carta-corpo p { font-size: 13px; color: #222; margin-bottom: 14px; text-align: justify; line-height: 1.75; }
+        .carta-assinatura { margin-top: 32px; }
+        .carta-assinatura p { font-size: 13px; color: #222; margin-bottom: 4px; }
+        .carta-assinatura strong { color: #1b5e20; }
+        @media print { body { padding: 20px 30px; } .carta { page-break-before: always; } }
+    </style>
+</head>
+<body>
+
+<!-- CURRÍCULO -->
+<div class="header">
+    <h1>ISAIAS EVARISTO</h1>
+    <div class="titulo">Desenvolvedor Backend em Formação | Estudante de ADS</div>
+    <div class="contatos">
+        <span><a href="mailto:isaias-evaristo156@hotmail.com">isaias-evaristo156@hotmail.com</a></span>
+        <span><a href="https://www.linkedin.com/in/isaias-evaristo-69504b430">linkedin.com/in/isaias-evaristo</a></span>
+        <span><a href="https://github.com/Isaias-Evaristo">github.com/Isaias-Evaristo</a></span>
+        <span><a href="https://www.instagram.com/isaias_.19/">instagram.com/isaias_.19</a></span>
+        <span>Brasil — Disponivel para mudanca de cidade/estado</span>
+    </div>
+</div>
+
+<div class="secao">
+    <h2>Perfil Profissional</h2>
+    <p style="font-size:12.5px; color:#333; line-height:1.75; text-align:justify;">
+        Desenvolvedor Backend em formação, pragmático e orientado a resultados. Comprometido com aprendizado contínuo,
+        inovação e construção de soluções tecnológicas que geram valor real para empresas e pessoas. Trabalho bem em
+        equipe, estou sempre em busca de desafios que me permitam crescer tecnicamente e contribuir com impacto para
+        o coletivo. Disciplinado e disposto a me mudar para novas cidades ou estados em busca de oportunidades relevantes.
+    </p>
+</div>
+
+<div class="secao">
+    <h2>Projetos em Destaque</h2>
+    <div class="item">
+        <div class="item-header">
+            <div>
+                <div class="item-titulo">BankChain Java</div>
+                <div class="item-empresa">github.com/Isaias-Evaristo/bank-chain-java</div>
+            </div>
+            <div class="item-periodo">Java · POO · Blockchain</div>
+        </div>
+        <ul>
+            <li>Sistema bancário modular com 7 classes integradas: Cliente, Conta, Transação, Histórico, Extrato, Bloco e Blockchain.</li>
+            <li>Implementação de regras de negócio reais: validação de saldo, controle de depósito e transferências seguras entre contas.</li>
+            <li>Histórico de transações dinâmico com ArrayList e emissão de Extrato Bancário consolidado por correntista.</li>
+            <li>Ledger imutável com encadeamento criptográfico de blocos (Hashing), gerando provas de integridade de dados.</li>
+            <li>Versionado no GitHub com commits semânticos e documentação profissional (README com diagrama Mermaid).</li>
+        </ul>
+    </div>
+    <div class="item">
+        <div class="item-header">
+            <div>
+                <div class="item-titulo">Lista de Tarefas — Aplicação Fullstack Online</div>
+                <div class="item-empresa">lista-de-tarefas-vaz6.onrender.com</div>
+            </div>
+            <div class="item-periodo">Node.js · SQLite · Render</div>
+        </div>
+        <ul>
+            <li>Aplicação web completa com autenticação de usuário (login e senha), banco de dados SQLite e publicada em produção no Render.</li>
+            <li>Demonstra domínio do ciclo completo de desenvolvimento: backend, banco de dados e deploy em nuvem.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="secao">
+    <h2>Formação Acadêmica</h2>
+    <div class="item">
+        <div class="item-header">
+            <div>
+                <div class="item-titulo">Análise e Desenvolvimento de Sistemas (ADS)</div>
+                <div class="item-empresa">Universidade Mauricio de Nassau</div>
+            </div>
+            <div class="item-periodo">Conclusão: Dez/2028</div>
+        </div>
+        <p>Em andamento. Foco em fundamentos de engenharia de software, estruturas de dados, banco de dados e desenvolvimento de sistemas.</p>
+    </div>
+    <div class="item">
+        <div class="item-header">
+            <div>
+                <div class="item-titulo">Graduação em Marketing</div>
+                <div class="item-empresa">Universidade Pitágoras Unopar Anhanguera</div>
+            </div>
+            <div class="item-periodo">Concluído: Jun/2026</div>
+        </div>
+        <p>Formação recém-concluída com base em estratégia de mercado, comportamento do consumidor, comunicação e análise de negócios — competências complementares ao desenvolvimento de soluções tecnológicas orientadas ao cliente.</p>
+    </div>
+    <div class="item">
+        <div class="item-header">
+            <div><div class="item-titulo">Ensino Médio</div></div>
+            <div class="item-periodo">Concluído</div>
+        </div>
+    </div>
+</div>
+
+<div class="secao">
+    <h2>Habilidades Técnicas</h2>
+    <div class="habilidades-grid">
+        <div class="habilidade-grupo">
+            <h3>Linguagens & Paradigmas</h3>
+            <div class="tags">
+                <span class="tag">Java</span>
+                <span class="tag">POO</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS3</span>
+            </div>
+        </div>
+        <div class="habilidade-grupo">
+            <h3>Backend & Banco de Dados</h3>
+            <div class="tags">
+                <span class="tag">Node.js</span>
+                <span class="tag">SQLite</span>
+                <span class="tag">ArrayList</span>
+                <span class="tag">APIs REST</span>
+            </div>
+        </div>
+        <div class="habilidade-grupo" style="margin-top:10px;">
+            <h3>Ferramentas & DevOps</h3>
+            <div class="tags">
+                <span class="tag">Git</span>
+                <span class="tag">GitHub</span>
+                <span class="tag">VS Code</span>
+                <span class="tag">PowerShell</span>
+                <span class="tag">Render</span>
+            </div>
+        </div>
+        <div class="habilidade-grupo" style="margin-top:10px;">
+            <h3>Conceitos & Arquitetura</h3>
+            <div class="tags">
+                <span class="tag">Blockchain</span>
+                <span class="tag">Hashing</span>
+                <span class="tag">Regras de Negócio</span>
+                <span class="tag">Coleções Java</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="secao">
+    <h2>Idiomas</h2>
+    <div class="idioma">
+        <span class="idioma-nome">Português</span>
+        <div class="barra">
+            <div class="ponto ativo"></div><div class="ponto ativo"></div><div class="ponto ativo"></div><div class="ponto ativo"></div><div class="ponto ativo"></div>
+        </div>
+        <span class="nivel">Nativo</span>
+    </div>
+    <div class="idioma">
+        <span class="idioma-nome">Inglês</span>
+        <div class="barra">
+            <div class="ponto ativo"></div><div class="ponto ativo"></div><div class="ponto"></div><div class="ponto"></div><div class="ponto"></div>
+        </div>
+        <span class="nivel">Básico (leitura e escrita) — Em desenvolvimento</span>
+    </div>
+</div>
+
+<div class="secao">
+    <h2>Perfil Comportamental</h2>
+    <div class="tags">
+        <span class="tag">Disciplinado</span>
+        <span class="tag">Pragmático</span>
+        <span class="tag">Orientado a Desafios</span>
+        <span class="tag">Geração de Valor</span>
+        <span class="tag">Trabalho em Equipe</span>
+        <span class="tag">Busca por Inovação</span>
+        <span class="tag">Mobilidade Geográfica</span>
+        <span class="tag">Aprendizado Contínuo</span>
+    </div>
+</div>
+
+<!-- CARTA DE APRESENTAÇÃO -->
+<div class="carta">
+    <div class="carta-header">
+        <h1>Carta de Apresentação</h1>
+        <p>Isaias Evaristo &nbsp;|&nbsp; Especialista de Distribuição - Downtrade (Pequeno Varejo) &nbsp;|&nbsp; Red Bull</p>
+    </div>
+    <div class="carta-corpo">
+        <p>Prezado(a) Recrutador(a) da Red Bull,</p>
+        <p>
+            É com muito entusiasmo que me candidato à vaga de <strong>Especialista de Distribuição - Downtrade
+            (Pequeno Varejo)</strong>. A Red Bull é uma marca que admiro profundamente — não apenas pelo produto,
+            mas pela cultura de alta performance, inovação e presença de mercado que a empresa construiu em cada
+            ponto de venda do Brasil e do mundo.
+        </p>
+        <p>
+            Sou graduado em Marketing pela Universidade Pitágoras Unopar Anhanguera, o que me deu uma base sólida
+            para compreender estratégias de distribuição, comportamento do consumidor e a dinâmica do varejo.
+            Atualmente curso Análise e Desenvolvimento de Sistemas, o que fortalece minha capacidade analítica e
+            meu olhar orientado a dados — uma vantagem competitiva para acompanhar indicadores de sell-out,
+            cobertura de carteira e execução no PDV com precisão.
+        </p>
+        <p>
+            Sou uma pessoa pragmática, disciplinada e orientada a resultados. Acredito que o pequeno varejo
+            (Downtrade) é o coração da distribuição de bebidas no Brasil — é onde o produto encontra o consumidor
+            final de forma mais direta e onde a execução de qualidade faz toda a diferença. Trabalho bem em
+            equipe, tenho facilidade de me relacionar com pessoas e estou sempre em busca de gerar valor real
+            para o negócio e para os clientes que atendo.
+        </p>
+        <p>
+            Tenho disponibilidade total para mudança de cidade ou estado e estou preparado para os desafios de
+            campo que a função exige. Encarar novos territórios e construir relacionamentos sólidos com donos de
+            pequenos varejos é exatamente o tipo de desafio que me motiva a dar o meu melhor todos os dias.
+        </p>
+        <p>
+            Coloco-me à disposição para uma conversa onde possa apresentar minha trajetória, meu perfil
+            comportamental e minha motivação genuína por fazer parte da equipe Red Bull. Será um prazer
+            demonstrar como penso, como executo e como gero resultado.
+        </p>
+        <div class="carta-assinatura">
+            <p>Atenciosamente,</p>
+            <p style="margin-top:16px;"><strong>Isaias Evaristo</strong></p>
+            <p style="font-size:12px; color:#555;">isaias-evaristo156@hotmail.com</p>
+            <p style="font-size:12px; color:#555;">linkedin.com/in/isaias-evaristo-69504b430</p>
+            <p style="font-size:12px; color:#555;">instagram.com/isaias_.19</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
