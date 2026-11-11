@@ -1,0 +1,644 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BankChain — Sistema Bancário</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        :root {
+            --verde-escuro: #1b5e20;
+            --verde-medio: #2e7d32;
+            --verde-claro: #e8f5e9;
+            --cinza-fundo: #f4f6f9;
+        }
+
+        body { background: var(--cinza-fundo); font-family: 'Segoe UI', sans-serif; scroll-behavior: smooth; }
+
+        .sidebar {
+            width: 240px;
+            min-height: 100vh;
+            background: var(--verde-escuro);
+            position: fixed;
+            top: 0; left: 0;
+            padding: 0;
+            z-index: 100;
+            transition: all 0.3s;
+        }
+
+        .sidebar-logo {
+            padding: 24px 20px 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .sidebar-logo h4 {
+            color: #fff;
+            font-weight: 700;
+            font-size: 20px;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .sidebar-logo span {
+            font-size: 11px;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .sidebar-menu { padding: 16px 0; }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 24px;
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+            cursor: pointer;
+        }
+
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            border-left: 3px solid #69f0ae;
+        }
+
+        .sidebar-menu .menu-label {
+            font-size: 10px;
+            color: rgba(255,255,255,0.3);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 16px 24px 6px;
+        }
+
+        .main-content {
+            margin-left: 240px;
+            padding: 28px 32px;
+            min-height: 100vh;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 28px;
+        }
+
+        .topbar h5 {
+            font-weight: 700;
+            color: #1a1a2e;
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .topbar small { color: #888; font-size: 13px; }
+
+        .btn-transferir {
+            background: var(--verde-medio);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-transferir:hover { background: var(--verde-escuro); color: #fff; }
+
+        .card-conta {
+            border: none;
+            border-radius: 16px;
+            padding: 24px;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+        }
+
+        .card-conta-isaias { background: linear-gradient(135deg, #1b5e20, #43a047); }
+        .card-conta-maria  { background: linear-gradient(135deg, #1a237e, #3949ab); }
+
+        .card-conta::before {
+            content: '';
+            position: absolute;
+            top: -30px; right: -30px;
+            width: 120px; height: 120px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+        }
+
+        .card-conta .label { font-size: 11px; opacity: 0.75; text-transform: uppercase; letter-spacing: 1px; }
+        .card-conta .nome  { font-size: 18px; font-weight: 700; margin: 4px 0 16px; }
+        .card-conta .saldo-label { font-size: 11px; opacity: 0.75; }
+        .card-conta .saldo { font-size: 28px; font-weight: 700; }
+        .card-conta .numero { font-size: 12px; opacity: 0.6; margin-top: 12px; }
+
+        .card-painel {
+            background: #fff;
+            border-radius: 16px;
+            padding: 24px;
+            border: none;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            margin-bottom: 24px;
+        }
+
+        .card-painel h6 {
+            font-weight: 700;
+            color: #1a1a2e;
+            font-size: 14px;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-painel h6 i { color: var(--verde-medio); }
+
+        .transacao-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .transacao-item:last-child { border-bottom: none; }
+
+        .transacao-icone {
+            width: 38px; height: 38px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            margin-right: 12px;
+        }
+
+        .icone-deposito  { background: #e8f5e9; color: #2e7d32; }
+        .icone-transfer  { background: #e3f2fd; color: #1565c0; }
+
+        .transacao-desc  { font-size: 13px; font-weight: 600; color: #1a1a2e; }
+        .transacao-data  { font-size: 11px; color: #aaa; }
+        .transacao-valor { font-size: 14px; font-weight: 700; }
+        .valor-entrada   { color: #2e7d32; }
+        .valor-saida     { color: #c62828; }
+
+        .bloco-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 18px;
+            border-left: 4px solid var(--verde-medio);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .bloco-numero {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--verde-medio);
+            margin-bottom: 8px;
+        }
+
+        .hash-box {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            color: #555;
+            margin-bottom: 6px;
+            word-break: break-all;
+        }
+
+        .hash-label { font-size: 10px; color: #aaa; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 2px; }
+        .hash-valor { color: #1b5e20; font-weight: 700; }
+        .hash-valor-anterior { color: #1565c0; font-weight: 700; }
+
+        .badge-transacoes {
+            background: var(--verde-claro);
+            color: var(--verde-escuro);
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-top: 8px;
+            display: inline-block;
+        }
+
+        .form-label { font-size: 13px; font-weight: 600; color: #333; }
+        .form-control, .form-select {
+            border-radius: 8px;
+            border: 1.5px solid #e0e0e0;
+            font-size: 13px;
+            padding: 10px 14px;
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: var(--verde-medio);
+            box-shadow: 0 0 0 3px rgba(46,125,50,0.1);
+        }
+
+        .btn-confirmar {
+            background: var(--verde-medio);
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .btn-confirmar:hover { background: var(--verde-escuro); }
+
+        .status-online {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #2e7d32;
+            font-weight: 600;
+        }
+
+        .dot-online {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: #4caf50;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%   { opacity: 1; }
+            50%  { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar { width: 100%; min-height: auto; position: relative; }
+            .sidebar-menu { display: flex; flex-wrap: wrap; padding: 8px; }
+            .sidebar-menu a { flex-direction: column; gap: 4px; padding: 10px 14px; font-size: 11px; border-left: none !important; border-bottom: 3px solid transparent; }
+            .sidebar-menu a.active, .sidebar-menu a:hover { border-bottom: 3px solid #69f0ae; border-left: none; }
+            .sidebar-menu .menu-label { display: none; }
+            .main-content { margin-left: 0; padding: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="sidebar-logo">
+        <h4>🏦 BankChain</h4>
+        <span>Ledger Imutável</span>
+    </div>
+    <nav class="sidebar-menu">
+        <div class="menu-label">Painel</div>
+        <a href="#secao-dashboard" class="active"><i class="bi bi-grid-1x2"></i> Dashboard</a>
+        <a href="#secao-transferir"><i class="bi bi-arrow-left-right"></i> Transferir</a>
+
+        <div class="menu-label">Financeiro</div>
+        <a href="#secao-historico"><i class="bi bi-clock-history"></i> Histórico</a>
+        <a onclick="abrirModalExtrato()" style="cursor: pointer;"><i class="bi bi-file-earmark-text"></i> Extrato</a>
+
+        <div class="menu-label">Blockchain</div>
+        <a href="#secao-ledger"><i class="bi bi-link-45deg"></i> Ledger</a>
+        <a onclick="validarLedger()" style="cursor: pointer;"><i class="bi bi-shield-check"></i> Validar</a>
+    </nav>
+</div>
+
+<div class="main-content">
+
+    <div class="topbar" id="secao-dashboard">
+        <div>
+            <h5>Dashboard Operacional</h5>
+            <small id="data-atual">Carregando data...</small>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+            <div class="status-online">
+                <div class="dot-online"></div>
+                Ledger Online
+            </div>
+            <a href="#secao-transferir" class="btn-transferir">
+                <i class="bi bi-send"></i> Nova Transferência
+            </a>
+        </div>
+    </div>
+
+    <!-- CARDS DAS CONTAS -->
+    <div class="row g-3 mb-4">
+        <div class="col-md-6">
+            <div class="card-conta card-conta-isaias">
+                <div class="label">Conta Corrente</div>
+                <div class="nome" id="c1-nome">Isaias Evaristo</div>
+                <div class="saldo-label">Saldo disponível</div>
+                <div class="saldo" id="c1-saldo">R$ 1.000,00</div>
+                <div class="numero">Conta: <span id="c1-num">1001</span> &nbsp;|&nbsp; Ag: 0001</div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card-conta card-conta-maria">
+                <div class="label">Conta Corrente</div>
+                <div class="nome" id="c2-nome">Maria Silva</div>
+                <div class="saldo-label">Saldo disponível</div>
+                <div class="saldo" id="c2-saldo">R$ 500,00</div>
+                <div class="numero">Conta: <span id="c2-num">1002</span> &nbsp;|&nbsp; Ag: 0001</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HISTÓRICO + TRANSFERÊNCIA -->
+    <div class="row g-3 mb-4">
+        <div class="col-lg-7" id="secao-historico">
+            <div class="card-painel">
+                <h6><i class="bi bi-clock-history"></i> Histórico de Transações Recentes</h6>
+                <div id="lista-transacoes">
+                    <div class="text-center text-muted py-4">Carregando transações do Ledger...</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-5" id="secao-transferir">
+            <div class="card-painel">
+                <h6><i class="bi bi-send"></i> Realizar Transferência</h6>
+                <form id="form-transferencia" onsubmit="realizarTransferencia(event)">
+                    <div class="mb-3">
+                        <label class="form-label">Conta de Origem</label>
+                        <select class="form-select" id="transf-origem" onchange="atualizarDestino()">
+                            <option value="1001">Isaias Evaristo — Conta 1001</option>
+                            <option value="1002">Maria Silva — Conta 1002</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Conta de Destino</label>
+                        <select class="form-select" id="transf-destino" disabled>
+                            <option value="1002">Maria Silva — Conta 1002</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Valor (R$)</label>
+                        <input type="number" step="0.01" min="1" class="form-control" id="transf-valor" placeholder="Ex: 300.00" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Descrição</label>
+                        <input type="text" class="form-control" id="transf-desc" placeholder="Ex: Pagamento ou transferência" required>
+                    </div>
+                    <button type="submit" class="btn-confirmar" id="btn-submit-transfer">
+                        <i class="bi bi-lock"></i> Confirmar e Lacrar no Bloco
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- LEDGER BLOCKCHAIN -->
+    <div class="card-painel" id="secao-ledger">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="m-0"><i class="bi bi-link-45deg"></i> Ledger Imutável (BankChain Blockchain)</h6>
+            <button class="btn btn-sm btn-outline-success" onclick="validarLedger()">
+                <i class="bi bi-shield-check"></i> Validar Integridade
+            </button>
+        </div>
+        <div class="row g-3" id="lista-blocos">
+            <div class="text-center text-muted py-4">Carregando blocos da Blockchain...</div>
+        </div>
+    </div>
+
+</div>
+
+<!-- MODAL DE EXTRATO -->
+<div class="modal fade" id="modalExtrato" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border-radius: 16px;">
+            <div class="modal-header bg-success text-white" style="border-radius: 16px 16px 0 0;">
+                <h5 class="modal-title"><i class="bi bi-file-earmark-text"></i> Extrato Bancário Consolidado</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="mb-3">
+                    <label class="form-label">Selecione a Conta:</label>
+                    <select class="form-select" id="select-conta-extrato" onchange="renderizarExtratoModal()">
+                        <option value="1001">Conta 1001 — Isaias Evaristo</option>
+                        <option value="1002">Conta 1002 — Maria Silva</option>
+                    </select>
+                </div>
+                <hr>
+                <div id="conteudo-extrato"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.getElementById('data-atual').innerText = new Date().toLocaleDateString('pt-BR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+    function formatarMoeda(valor) {
+        return Number(valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+
+    function atualizarDestino() {
+        const origem = document.getElementById('transf-origem').value;
+        const selectDestino = document.getElementById('transf-destino');
+        if (origem === '1001') {
+            selectDestino.innerHTML = '<option value="1002">Maria Silva — Conta 1002</option>';
+        } else {
+            selectDestino.innerHTML = '<option value="1001">Isaias Evaristo — Conta 1001</option>';
+        }
+    }
+
+    async function carregarDados() {
+        try {
+            // Carrega saldos
+            const resContas = await fetch('/api/contas');
+            const contas = await resContas.json();
+
+            document.getElementById('c1-nome').innerText = contas.conta1.nome;
+            document.getElementById('c1-saldo').innerText = formatarMoeda(contas.conta1.saldo);
+            document.getElementById('c2-nome').innerText = contas.conta2.nome;
+            document.getElementById('c2-saldo').innerText = formatarMoeda(contas.conta2.saldo);
+
+            // Carrega Histórico
+            const resHist = await fetch('/api/historico');
+            const historicos = await resHist.json();
+            const containerHist = document.getElementById('lista-transacoes');
+            containerHist.innerHTML = '';
+
+            let todasTransacoes = [];
+            if (historicos.conta1) todasTransacoes = todasTransacoes.concat(historicos.conta1);
+            if (historicos.conta2) todasTransacoes = todasTransacoes.concat(historicos.conta2);
+
+            if (todasTransacoes.length === 0) {
+                containerHist.innerHTML = '<div class="text-center text-muted py-3">Nenhuma transação registrada ainda.</div>';
+            } else {
+                todasTransacoes.slice(-6).reverse().forEach(t => {
+                    const isSaida = t.tipo.includes('ENVIADA') || t.tipo.includes('Saque');
+                    const icone = isSaida ? 'bi-arrow-up-circle' : 'bi-arrow-down-circle';
+                    const classeIcone = isSaida ? 'icone-saque' : 'icone-deposito';
+                    const classeValor = isSaida ? 'valor-saida' : 'valor-entrada';
+                    const sinal = isSaida ? '- ' : '+ ';
+
+                    containerHist.innerHTML += `
+                        <div class="transacao-item">
+                            <div class="d-flex align-items-center">
+                                <div class="transacao-icone ${classeIcone}"><i class="bi ${icone}"></i></div>
+                                <div>
+                                    <div class="transacao-desc">${t.descricao || t.tipo}</div>
+                                    <div class="transacao-data">${t.data} · ${t.hora} (${t.tipo})</div>
+                                </div>
+                            </div>
+                            <div class="transacao-valor ${classeValor}">${sinal}${formatarMoeda(t.valor)}</div>
+                        </div>
+                    `;
+                });
+            }
+
+            // Carrega Blocos da Blockchain
+            const resChain = await fetch('/api/blockchain');
+            const blocos = await resChain.json();
+            const containerBlocos = document.getElementById('lista-blocos');
+            containerBlocos.innerHTML = '';
+
+            blocos.forEach(b => {
+                const isGenesis = b.indice === 0;
+                const titulo = isGenesis ? 'Bloco #0 — Gênesis' : `Bloco #${b.indice}`;
+                const qtd = b.transacoes ? b.transacoes.length : 1;
+
+                containerBlocos.innerHTML += `
+                    <div class="col-md-4">
+                        <div class="bloco-card">
+                            <div class="bloco-numero">${titulo}</div>
+                            <div class="hash-box">
+                                <span class="hash-label">Hash Anterior</span>
+                                <span class="hash-valor-anterior">${b.hashAnterior}</span>
+                            </div>
+                            <div class="hash-box">
+                                <span class="hash-label">Hash do Bloco</span>
+                                <span class="hash-valor">${b.hash}</span>
+                            </div>
+                            <div class="hash-box">
+                                <span class="hash-label">Timestamp</span>
+                                ${b.timestamp}
+                            </div>
+                            <span class="badge-transacoes">${qtd} transação(ões)</span>
+                        </div>
+                    </div>
+                `;
+            });
+
+        } catch (e) {
+            console.error('Erro ao conectar com API:', e);
+        }
+    }
+
+    async function realizarTransferencia(event) {
+        event.preventDefault();
+        const btn = document.getElementById('btn-submit-transfer');
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Minerando e Lacrando Bloco...';
+
+        const origem = document.getElementById('transf-origem').value;
+        const valor = document.getElementById('transf-valor').value;
+        const descricao = document.getElementById('transf-desc').value;
+
+        try {
+            const res = await fetch('/api/transferir', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ origem, valor, descricao })
+            });
+            const data = await res.json();
+
+            if (data.sucesso) {
+                alert(`✅ ${data.mensagem}\n\nBloco #${data.novoBlocoIndice} minerado com Hash: ${data.novoBlocoHash}`);
+                document.getElementById('transf-valor').value = '';
+                document.getElementById('transf-desc').value = '';
+                carregarDados();
+            } else {
+                alert(`❌ Erro: ${data.mensagem}`);
+            }
+        } catch (e) {
+            alert('Erro ao processar transferência.');
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = '<i class="bi bi-lock"></i> Confirmar e Lacrar no Bloco';
+        }
+    }
+
+    async function validarLedger() {
+        try {
+            const res = await fetch('/api/validar');
+            const data = await res.json();
+            if (data.valido) {
+                alert(`🛡️ SUCESSO: ${data.mensagem}\nTotal de Blocos no Ledger: ${data.totalBlocos}`);
+            } else {
+                alert(`⚠️ ATENÇÃO: ${data.mensagem}`);
+            }
+        } catch (e) {
+            alert('Erro ao validar Ledger.');
+        }
+    }
+
+    let modalExtratoInstancia = null;
+    function abrirModalExtrato() {
+        if (!modalExtratoInstancia) {
+            modalExtratoInstancia = new bootstrap.Modal(document.getElementById('modalExtrato'));
+        }
+        renderizarExtratoModal();
+        modalExtratoInstancia.show();
+    }
+
+    async function renderizarExtratoModal() {
+        const contaEscolhida = document.getElementById('select-conta-extrato').value;
+        const resContas = await fetch('/api/contas');
+        const contas = await resContas.json();
+        const resHist = await fetch('/api/historico');
+        const historicos = await resHist.json();
+
+        const dadosConta = (contaEscolhida === '1001') ? contas.conta1 : contas.conta2;
+        const listaTransf = (contaEscolhida === '1001') ? historicos.conta1 : historicos.conta2;
+
+        let html = `
+            <div class="mb-2"><strong>Titular:</strong> ${dadosConta.nome}</div>
+            <div class="mb-2"><strong>Número da Conta:</strong> ${dadosConta.numeroConta}</div>
+            <div class="mb-3"><strong>Saldo Consolidado:</strong> <span class="text-success fw-bold">${formatarMoeda(dadosConta.saldo)}</span></div>
+            <h6 class="text-muted mt-3 mb-2">Movimentações:</h6>
+        `;
+
+        if (!listaTransf || listaTransf.length === 0) {
+            html += '<div class="text-muted">Nenhuma transação nesta conta.</div>';
+        } else {
+            listaTransf.forEach(t => {
+                html += `
+                    <div class="p-2 border-bottom d-flex justify-content-between align-items-center">
+                        <div>
+                            <div><strong>${t.tipo}</strong></div>
+                            <small class="text-muted">${t.data} ${t.hora} - ${t.descricao}</small>
+                        </div>
+                        <div class="fw-bold">${formatarMoeda(t.valor)}</div>
+                    </div>
+                `;
+            });
+        }
+        document.getElementById('conteudo-extrato').innerHTML = html;
+    }
+
+    // Carrega tudo ao abrir a página
+    carregarDados();
+</script>
+
+</body>
+</html>
